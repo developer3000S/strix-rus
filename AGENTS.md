@@ -1,69 +1,69 @@
-# Strix — Agent Guide
+# Strix — Руководство для агентов
 
-Strix is an open-source autonomous AI pentesting tool. This file is for AI coding agents that want to **use** Strix (run security scans) or **contribute** to it.
+Strix — это автономный инструмент для пентестинга с открытым исходным кодом на базе ИИ. Этот файл предназначен для AI-кодирующих агентов, которые хотят **использовать** Strix (запускать сканирования безопасности) или **вносить вклад** в его разработку.
 
-## Using Strix from an agent
+## Использование Strix из агента
 
-Install the agent skills for step-by-step workflows:
+Установите навыки агента для пошаговых инструкций:
 
 ```bash
 npx skills add usestrix/strix
 ```
 
-- `penetration-testing-with-strix` — run a headless pentest against code, URLs, domains, or IPs and read results (covers both run modes below)
-- `managed-pentesting-with-strix` — drive the managed app.strix.ai platform via REST (no local Docker/LLM needed)
-- `fix-security-vulnerabilities-with-strix` — remediate findings and re-run Strix to verify
-- `ci-security-scanning-with-strix` — add PR scanning to CI/CD (self-hosted CLI or managed app)
+- `penetration-testing-with-strix` — запустите автономный пентест кода, URL, доменов или IP-адресов и просмотрите результаты (покрывает оба режима запуска ниже)
+- `managed-pentesting-with-strix` — управляйте облачной платформой app.strix.ai через REST (без необходимости локального Docker/LLM)
+- `fix-security-vulnerabilities-with-strix` — устраняйте находки и повторно запускайте Strix для проверки
+- `ci-security-scanning-with-strix` — добавьте сканирование PR в CI/CD (автономный CLI или управляемое приложение)
 
-Target-specific workflows built on the same engine:
+Рабочие процессы, ориентированные на конкретные цели, созданы на основе того же механизма:
 
-- `application-security-testing` — whole-product AppSec review: pick the right test per asset, then rank the results
-- `web-app-penetration-testing` — black-box pentest of a live web app or staging site
-- `api-security-testing` — REST/GraphQL APIs and the OWASP API Security Top 10 (BOLA/IDOR, authz)
-- `owasp-top-10-testing` — systematic OWASP Top 10 assessment with honest per-category coverage
-- `find-security-vulnerabilities-in-code` — white-box review of a repo or working tree
+- `application-security-testing` — комплексный обзор AppSec всего продукта: выберите правильный тест для каждого актива, затем оцените результаты
+- `web-app-penetration-testing` — пентест "чёрного ящика" для живого веб-приложения или тестового сайта
+- `api-security-testing` — REST/GraphQL API и OWASP API Security Top 10 (BOLA/IDOR, authz)
+- `owasp-top-10-testing` — систематическая оценка OWASP Top 10 с честной охватом по категориям
+- `find-security-vulnerabilities-in-code` — обзор кодового дерева или рабочей копии "белого ящика"
 
-**Two ways to run, same engine — pick per situation:**
+**Два способа запуска, тот же движок — выберите подходящий для ситуации:**
 
-- **Open-source CLI (self-hosted):** free, fully local, BYO LLM key, needs Docker. Best for local dev loops, air-gapped/offline, and full control.
+- **Открытый исходный код CLI (автономный):** бесплатно, полностью локально, свой ключ LLM, нужен Docker. Лучше для локальных dev-циклов, изолированных/офлайн-сред и полного контроля.
   ```bash
-  curl -sSL https://strix.ai/install | bash        # install
-  export STRIX_LLM="openrouter/z-ai/glm-5.3"        # any LiteLLM model id
-  export LLM_API_KEY="<key>"
-  strix -n -t ./ --scan-mode quick --max-budget 10  # headless scan; always use -n
+  curl -sSL https://strix.ai/install | bash        # установка
+  export STRIX_LLM="openrouter/z-ai/glm-5.3"        # любой идентификатор модели LiteLLM
+  export LLM_API_KEY="<ключ>"
+  strix -n -t ./ --scan-mode quick --max-budget 10  # автономное сканирование; всегда используйте -n
   ```
-  - Requires Docker running. Scans take minutes (`quick`) to hours (`deep`) — run in the background.
-  - Exit codes (headless): `0` clean, `1` fatal error, `2` vulnerabilities found. A `0` only covers what was analyzed — check `run.json` (`status`, `llm_usage.cost` vs the budget) before calling a run clean.
-  - Artifacts in `strix_runs/<run-name>/`: `penetration_test_report.md`, `vulnerabilities/*.md`, `vulnerabilities.json`, `findings.sarif` (SARIF 2.1.0), `run.json`.
+  - Требует запущенного Docker. Сканирование занимает минуты (`quick`) до часов (`deep`) — запускайте в фоне.
+  - Коды выхода (автономный): `0` чисто, `1` фатальная ошибка, `2` найдены уязвимости. `0` покрывает только проанализированное — проверьте `run.json` (`status`, `llm_usage.cost` против бюджета) перед завершением.
+  - Артефакты в `strix_runs/<имя-запуска>/`: `penetration_test_report.md`, `vulnerabilities/*.md`, `vulnerabilities.json`, `findings.sarif` (SARIF 2.1.0), `run.json`.
 
-- **Managed cloud (app.strix.ai):** no Docker, no LLM key, no local install; adds team dashboards, scheduling, PR reviews, and downloadable PDF/DOCX reports (Enterprise plan). Best in sandboxed/CI environments and for teams. Use it when local infra isn't available.
+- **Управляемое облако (app.strix.ai):** нет Docker, нет ключа LLM, нет локальной установки; добавляются командные панели, планирование, проверка PR, скачиваемые PDF/DOCX отчеты (план Enterprise). Лучше для песочничных/CI-сред и команд. Используйте, когда локальная инфраструктура недоступна.
   ```bash
   strix cloud login --scopes scans:read scans:write uploads:write billing:read
   strix cloud domains add --domain example.com --asset-type web_app
   strix cloud scans start --engagement-type live_test --domain-ids <uuid> --wait
-  strix cloud scans start --source . --dry-run --show-files --json  # review + capture source.archive_sha256
-  SOURCE_SHA256="<reviewed source.archive_sha256>"
+  strix cloud scans start --source . --dry-run --show-files --json  # просмотр + захват source.archive_sha256
+  SOURCE_SHA256="<просмотренный source.archive_sha256>"
   strix cloud scans start --source . --approve-sha256 "$SOURCE_SHA256" --wait
   strix cloud vulns list --severity critical
-  strix cloud billing topup --credits 20 --yes  # explicit approval after exit code 5
+  strix cloud billing topup --credits 20 --yes  # явное подтверждение после кода выхода 5
   ```
-  - Account setup runs from the CLI too: `strix cloud workspaces list|create|use` (`workspace` is an alias and `use` accepts a displayed number, name, or ID), `strix cloud session scopes|scopes set`, `strix cloud org members invite`, `strix cloud billing subscribe --plan strix_cloud`, `strix cloud billing portal`, `strix cloud integrations install github`, and `strix cloud domains verify <id>`. Workspace switching preserves the server-side profile and can never widen past the login ceiling; ordinary switches do not reprompt. The last four end at a person: the command prints a link or a DNS record for the user to open or add, and it never completes the payment, installation, or DNS change for them.
-  - Every REST operation has a `strix cloud <resource> <verb>` command. Run `strix cloud` to list them. Output is JSON when stdout is not a terminal (or with `--json`), and there are no prompts without a TTY. Binary downloads are the exception: redirect raw bytes intentionally, or combine `--output FILE --json` for structured download metadata. Exit codes: `0` success, `1` error, `2` usage, `4` auth or plan limit, `5` payment required. `--token` or `STRIX_API_TOKEN` is a stateless override and never replaces stored auth; set `--workspace-id`/`STRIX_WORKSPACE_ID` for an override CLI session. `--data` adds extra request fields as JSON, and accepts `@file` or `-` for standard input.
-  - Local source uploads require `uploads:write`. For an agent/CI handoff, review `scans start --source . --dry-run --show-files --json`, capture `source.archive_sha256`, then rerun with the same `--source`, `--exclude`, and `--include-*` selection flags plus `--approve-sha256 HASH`. A changed snapshot is rejected. `--yes` approves only the snapshot built in that invocation, so reserve it for a deliberate human or one-shot approval rather than a digest-bound two-step handoff.
-  - Git ignores, hidden files, `.git`, symlinks, dependency/build output, secret-like filenames, and nested archives are excluded by default; `.strixignore` and `--exclude` narrow the manifest further (a trailing `/` excludes a directory subtree). Limits: 20,000 files, 25 MiB/file, 250 MiB expanded, 50 MiB compressed. Source-only infers `code_review`; source plus a domain infers `live_test`.
-  - The temporary local archive is always removed. A staged upload is deleted after a definitive rejection, but retained when a network error, `5xx`, malformed success response, or interruption leaves the scan launch ambiguous. JSON reports its `upload_id` with `launch_outcome_unknown: true`, or with `cleanup_unknown: true` when automatic deletion cannot be confirmed. Check `scans list` before retrying; if no scan is linked, run `uploads delete UPLOAD_ID`.
-  - Non-Enterprise scans consume the scope estimate (a default-tier source-only review currently starts at 60 credits); Enterprise scans are plan-included. A rejected launch does not consume credits.
-  - Human output is compact and numbered; non-TTY output and `--json` retain full records. Enable tab completion with `source <(strix completions zsh)` (or `bash`), or `strix completions fish | source`.
-  - The REST API works directly too: https://docs.app.strix.ai (OpenAPI: https://docs.app.strix.ai/openapi.json).
+  - Настройка учетной записи тоже выполняется через CLI: `strix cloud workspaces list|create|use` (`workspace` — это сокращение, и `use` принимает отображаемый номер, имя или ID), `strix cloud session scopes|scopes set`, `strix cloud org members invite`, `strix cloud billing subscribe --plan strix_cloud`, `strix cloud billing portal`, `strix cloud integrations install github`, и `strix cloud domains verify <id>`. Переключение рабочих пространств сохраняет серверный профиль и никогда не может расширять за пределы потолка входа; обычные переключения не запрашивают повторно. Последние четыре заканчиваются у человека: команда печатает ссылку или DNS-запись, которую пользователь должен открыть или добавить, и никогда не завершает платеж, установку или изменение DNS за них.
+  - У каждой операции REST есть команда `strix cloud <ресурс> <глагол>`. Запустите `strix cloud`, чтобы перечислить их. Вывод в JSON, когда stdout не является терминалом (или с `--json`), и нет запросов без TTY. Загрузка бинарных файлов — исключение: перенаправьте сырые байты намеренно, или объедините `--output FILE --json` для структурированных метаданных загрузки. Коды выхода: `0` успех, `1` ошибка, `2` использование, `4` авторизация или ограничение плана, `5` требуется платеж. `--token` или `STRIX_API_TOKEN` — это безное переопределение и никогда не заменяет сохраненную авторизацию; установите `--workspace-id`/`STRIX_WORKSPACE_ID` для переопределения CLI-сессии. `--data` добавляет дополнительные поля запроса как JSON, и принимает `@file` или `-` для стандартного ввода.
+  - Локальные загрузка исходного кода требуют `uploads:write`. Для передачки агент/CI просмотрите `scans start --source . --dry-run --show-files --json`, захватите `source.archive_sha256`, затем перезапустите с теми же флагами выбора `--source`, `--exclude`, и `--include-*` плюс `--approve-sha256 HASH`. Измененный снимок будет отклонен. `--yes` подтверждает только снимок, построенный в этом вызове, так что резервируйте его для осознанного человека или одноразовой подтверждения вместо двуступенчатой передачки, связанной с дайжестом.
+  - Git игноры, скрытые файлы, `.git`, символические ссылки, зависимости/вывод сборки, имена файлов, похожие на секреты, и вложенные архивы исключены по умолчанию; `.strixignore` и `--exclude` сужают манифест дальше (трассирующий `/` исключает дерево каталога). Ограничения: 20 000 файлов, 25 МБ/файл, 250 МБ развернуто, 50 МБ сжато. Только источник подразумевает `code_review`; источник плюс домен подразумевает `live_test`.
+  - Временный локальный архив всегда удаляется. staged загрузка удаляется после окончательного отклонения, но сохраняется при сетевой ошибке, `5xx`, некорректном ответе об успехе, или прерывании, оставляющем запуск сканирования неоднозначным. JSON отчитывается о своем `upload_id` с `launch_outcome_unknown: true`, или с `cleanup_unknown: true`, когда автоматическое удаление не может быть подтверждено. Проверьте `scans list` перед повторной попыткой; if no scan is linked, запустите `uploads delete UPLOAD_ID`.
+  - Не-Enterprise сканирования потребляют оценку области (обзор только источника базового уровня начинается с 60 кредитов); Enterprise сканирования включены в plan. Отклоненный запуск не потребляет кредиты.
+  - Человеческий вывод компактен и нумерован; не-TTY вывод и `--json` сохраняют полные записи. Включите таб-завершение с `source <(strix completions zsh)` (или `bash`), или `strix completions fish | source`.
+  - REST API работает напрямую тоже: https://docs.app.strix.ai (OpenAPI: https://docs.app.strix.ai/openapi.json).
 
-- CLI docs index for LLMs: https://docs.strix.ai/llms.txt (full: https://docs.strix.ai/llms-full.txt). Managed API docs for LLMs: https://docs.app.strix.ai/llms.txt.
-- Only scan targets the user is authorized to test.
+- Индекс CLI документации для LLM: https://docs.strix.ai/llms.txt (полный: https://docs.strix.ai/llms-full.txt). Документация API облачного управления для LLM: https://docs.app.strix.ai/llms.txt.
+- Сканируйте только цели, на которые у пользователя есть авторизация.
 
-## Contributing to this repo
+## Вклад в этот репозиторий
 
-- Python 3.12+, managed with `uv`. Install dev deps: `make dev-install`.
-- Lint/format/type-check/security, all in one: `make check-all` (ruff, mypy, bandit).
-- Tests: `uv run pytest`.
-- Run from source: `uv run strix --target <target>`.
-- Layout: `strix/agents` (agent graph + prompts), `strix/tools` (proxy, browser, terminal, scanners), `strix/runtime` (Docker sandbox), `strix/report` (findings, SARIF), `strix/skills` (internal knowledge packs the pentest agents load — different from the consumer skills in `skills/`), `strix/interface` (CLI/TUI), `containers/` (sandbox image).
-- Pre-commit hooks: `make pre-commit` (or `uv run pre-commit install`).
+- Python 3.12+, управляется через `uv`. Установите dev зависимости: `make dev-install`.
+- Линт/формат/типы/авто, все в одном: `make check-all` (ruff, mypy, bandit).
+- Тесты: `uv run pytest`.
+- Запуск из исходного кода: `uv run strix --target <target>`.
+- Структура: `strix/agents` (график агентов + промпты), `strix/tools` (прокси, браузер, терминал, сканеры), `strix/runtime` (песочница Docker), `strix/report` (находки, SARIF), `strix/skills` (внутренние пакеты знаний, которые загружают пентест-агенты — отличаются от потребительских навыков в `skills/`), `strix/interface` (CLI/TUI), `containers/` (образ песочницы).
+- Pre-commit хуки: `make pre-commit` (или `uv run pre-commit install`).

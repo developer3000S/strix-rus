@@ -1,147 +1,146 @@
-# Contributing to Strix
+# Внесение вклада в Strix
 
-Thank you for your interest in contributing to Strix! This guide will help you get started with development and contributions.
+Спасибо за ваш интерес к внесению вклада в Strix! Это руководство поможет вам начать работу с разработкой и внесением вклада.
 
-## 🚀 Development Setup
+## 🚀 Настройка разработки
 
-### Prerequisites
+### Необходимые условия
 
 - Python 3.12+
-- Latest Go 1.24.x patch (only for Bubble Tea TUI development and release artifacts)
-- Docker (running)
-- [uv](https://docs.astral.sh/uv/) (for dependency management)
+- последняя Go 1.24.x (только для разработки Bubble Tea TUI и выпусков артефактов)
+- Docker (работающий)
+- [uv](https://docs.astral.sh/uv/) (для управления зависимостями)
 - Git
 
-### Local Development
+### Локальная разработка
 
-1. **Clone the repository**
+1. **Клонируйте репозиторий**
    ```bash
    git clone https://github.com/usestrix/strix.git
    cd strix
    ```
 
-2. **Install development dependencies**
+2. **Установите зависимости для разработки**
    ```bash
    make setup-dev
 
-   # or manually:
+   # или вручную:
    uv sync
    uv run pre-commit install
    ```
 
-3. **Configure your LLM provider**
+3. **Настройте вашего провайдера LLM**
    ```bash
    export STRIX_LLM="openrouter/z-ai/glm-5.3"
-   export LLM_API_KEY="your-api-key"
+   export LLM_API_KEY="ваш-ключ-api"
    ```
 
-4. **Run Strix in development mode**
+4. **Запустите Strix в режиме разработки**
    ```bash
    uv run strix --target https://example.com
    ```
 
-## 📚 Contributing Skills
+## 📚 Внесение вклада в навыки
 
-Skills are specialized knowledge packages that enhance agent capabilities. See [strix/skills/README.md](strix/skills/README.md) for detailed guidelines.
+Навыки — это специализированные пакеты знаний, которые улучшают возможности агентов. См. [strix/skills/README.md](strix/skills/README.md) для подробных инструкций.
 
-### Quick Guide
+### Краткое руководство
 
-1. **Choose the right category** (`/vulnerabilities`, `/frameworks`, `/technologies`, etc.)
-2. **Create a** `.md` file with your skill content
-3. **Include practical examples** - Working payloads, commands, or test cases
-4. **Provide validation methods** - How to confirm findings and avoid false positives
-5. **Submit via PR** with clear description
+1. **Выберите правильную категорию** (`/vulnerabilities`, `/frameworks`, `/technologies`, и т.д.)
+2. **Создайте файл** `.md` с вашим содержанием навыка
+3. **Включите практические примеры** - Рабочие payload, команды или тестовые случаи
+4. **Предоставьте методы проверки** - Как подтвердить находки и избежать ложных срабатываний
+5. **Отправьте через PR** с четким описанием
 
-## 🔧 Contributing Code
+## 🔧 Внесение вклада в код
 
-### Pull Request Process
+### Процесс pull request
 
-1. **Create an issue first** - Describe the problem or feature
-2. **Fork and branch** - Work from the `main` branch
-3. **Make your changes** - Follow existing code style
-4. **Write/update tests** - Ensure coverage for new features
-5. **Run quality checks** - `make check-all` should pass
-6. **Submit PR** - Link to issue and provide context
+1. **Сначала создайте issue** - Опишите проблему или функцию
+2. **Создайте форк и ветку** - Работайте из ветки `main`
+3. **Внесите ваши изменения** - Следуйте существующему стилю кода
+4. **Напишите/обновите тесты** - Убедитесь в покрытии для новых функций
+5. **Запустите проверки качества** - `make check-all` должно пройти
+6. **Отправьте PR** - Ссылка на issue и предоставьте контекст
 
-### PR Guidelines
+### Руководства для PR
 
-- **Clear description** - Explain what and why
-- **Small, focused changes** - One feature/fix per PR
-- **Include examples** - Show before/after behavior
-- **Update documentation** - If adding features
-- **Pass all checks** - Tests, linting, type checking
+- **Четкое описание** - Объясните что и почему
+- **Маленькие, сфокусированные изменения** - Одна функция/исправление на PR
+- **Включите примеры** - Покажите поведение до/после
+- **Обновите документацию** - Если добавляете функции
+- **Пройдите все проверки** - Тесты, линтинг, проверка типов
 
-### Code Style
+### Стиль кода
 
-- Follow PEP 8 with 100-character line limit
-- Use type hints for all functions
-- Write docstrings for public methods
-- Keep functions focused and small
-- Use meaningful variable names
+- Следуйте PEP 8 с лимитом длины строки 100 символов
+- Используйте аннотации типов для всех функций
+- Пишите docstring для публичных методов
+- Держите функции сфокусированными и небольшими
+- Используйте осмысленные имена переменных
 
-## 🐛 Reporting Issues
+## 🐛 Сообщение об ошибках
 
-When reporting bugs, please include:
+При сообщении об ошибках, пожалуйста, включите:
 
-- Python version and OS
-- Strix version
-- LLMs being used
-- Full error traceback
-- Steps to reproduce
-- Expected vs actual behavior
+- Версия Python и ОС
+- Версия Strix
+- Используемые LLM
+- Полный стек ошибки traceback
+- Шаги для воспроизведения
+- Ожидаемое vs фактическое поведение
 
-## 💡 Feature Requests
+## 💡 Запросы на функции
 
-We welcome feature ideas! Please:
+Мы приветствуем идеи о функциях! Пожалуйста:
 
-- Check existing issues first
-- Describe the use case clearly
-- Explain why it would benefit users
-- Consider implementation approach
-- Be open to discussion
+- Проверьте существующие issue сначала
+- Опишите_use case понятно
+- Объясните, как это принесет пользу пользователям
+- Рассмотрите подход к реализации
+- Будьте открыты к обсуждению
 
-## 🖥️ Local viewer SPA
+## 🖥️ Локальный просмотрщик SPA
 
-`strix view` serves a prebuilt web UI whose source lives in
-`strix/interface/viewer/frontend/` (a Vite + React project) and whose built output is
-committed to `strix/interface/viewer/static/` and shipped in the package. End users never
-run a JS build. If you change anything under `strix/interface/viewer/frontend/`, rebuild
-and commit the output:
+`strix view` служит предсборанным веб-интерфейсом, чей исходный код находится в
+`strix/interface/viewer/frontend/` (проект Vite + React) и чей собранный вывод
+закоммитах в `strix/interface/viewer/static/` и поставляется в пакете. Конечные пользователи никогда
+не запускают сборку JS. Если вы измените что-либо в `strix/interface/viewer/frontend/`, пересоберите
+и закоммитьте вывод:
 
 ```bash
-make viewer   # or: cd strix/interface/viewer/frontend && npm ci && npm run build
+make viewer   # или: cd strix/interface/viewer/frontend && npm ci && npm run build
 ```
 
-Commit both the source change and the regenerated `strix/interface/viewer/static/`.
+Закоммитьте как исходное изменение, так и регенерированную `strix/interface/viewer/static/`.
 
-## Package builds
+## Сборки пакетов
 
-Editable installs do not need Go; they run the TUI from source (`go run`).
+Редактируемые установки не требуют Go; они запускают TUI напрямую из исходного кода (`go run`).
 
-Wheels always bundle the matching Go sidecar and are platform-specific:
+Wheel всегда включает соответствующую Go сторону и являются специфичными для платформы:
 
 ```bash
 make wheel
 ```
 
-The build hook (`scripts/tui_sidecar_hook.py`) compiles the sidecar, embeds it as
-`strix/bin/strix-tui`, and assigns the current platform tag. It requires Go
-1.24.x or newer and fails rather than producing a wheel without the sidecar.
-`scripts/build.sh` and `strix.spec` are likewise strict for frozen PyInstaller
-releases.
+Хук сборки (`scripts/tui_sidecar_hook.py`) компилирует сторону, встраивает ее как
+`strix/bin/strix-tui`, и назначает текущий тег платформы. Он требует Go 1.24.x или новее и завершает неудачей, вместо того чтобы производить wheel без стороны.
+`scripts/build.sh` и `strix.spec` также строгие для замороженных PyInstaller
+выпусков.
 
-## 🤝 Community
+## 🤝 Сообщество
 
-- **Discord**: [Join our community](https://discord.gg/strix-ai)
+- **Discord**: [Присоединяйтесь к нашему сообществу](https://discord.gg/strix-ai)
 - **Issues**: [GitHub Issues](https://github.com/usestrix/strix/issues)
 
-## ✨ Recognition
+## ✨ Признание
 
-We value all contributions! Contributors will be:
-- Listed in release notes
-- Thanked in our Discord
-- Added to contributors list (coming soon)
+Мы ценим все вклады! Вкладчики будут:
+- Указаны в примечаниях релизов
+- Поблагодарены в нашем Discord
+- Добавлены в список вкладчиков (скоро будет)
 
 ---
 
-**Questions?** Reach out on [Discord](https://discord.gg/strix-ai) or create an issue. We're here to help!
+**Вопросы?** Свяжитесь с нами в [Discord](https://discord.gg/strix-ai) или создайте issue. Мы здесь, чтобы помочь!

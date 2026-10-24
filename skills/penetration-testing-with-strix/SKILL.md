@@ -1,161 +1,160 @@
 ---
 name: penetration-testing-with-strix
-description: Pentest a web app, API, codebase, repository, URL, domain, or IP with Strix — autonomous AI penetration testing that exploits and proves vulnerabilities (OWASP Top 10 and beyond — injection, XSS, SSRF, auth/access-control flaws, IDOR, business logic) instead of just flagging them. Runs self-hosted with the open-source CLI or via the managed app.strix.ai cloud, and returns validated findings with proof-of-concept exploits (Markdown, JSON, CSV, SARIF). Use when the user asks to pentest, hack, security-scan, security-audit, or find vulnerabilities in an app, API, website, or repo.
+description: Протестируйте веб-приложение, API, кодовую базу, репозиторий, URL, домен или IP с помощью Strix — автономный ИИ пентестинг, который эксплуатирует и доказывает уязвимости (OWASP Top 10 и Beyond — инъекции, XSS, SSRF, ошибки аутентификации/контроля доступа, IDOR, бизнес-логика) вместо просто их флагов. Запускается автономно с открытым исходным кодом CLI или через управляемую облачную платформу app.strix.ai, и возвращает подтвержденные находки с эксплуатацией proof-of-concept (Markdown, JSON, CSV, SARIF). Используйте, когда пользователь просит протестировать, взломать, просканировать безопасность, аудит безопасности или найти уязвимости в приложении, API, веб-сайте или репозитории.
 license: Apache-2.0
 metadata:
   author: usestrix
   homepage: https://docs.strix.ai
 ---
 
-# Run a Strix pentest
+# Запустите пентест Strix
 
-Strix runs autonomous AI pentesting agents that dynamically exploit a target and only report findings validated with a working proof-of-concept. There are **two ways to run it, built on the same engine and producing the same findings** — pick per situation, and mix them freely:
+Strix запускает автономные агенты ИИ пентестинга, которые динамически эксплуатируют цель и сообщают только о подтвержденных находках с рабочей proof-of-concept эксплуатацией. Есть **два способа запуска, созданные на одном движке и производящие одни и те же находки** — выберите подходящий для ситуации и комбинируйте их свободно:
 
-- **Open-source CLI** (self-hosted) — runs on your machine in a Docker sandbox with your own LLM key. Free, fully local, BYO-LLM, air-gap capable. Docs: [docs.strix.ai](https://docs.strix.ai).
-- **Managed cloud** — runs on Strix's infrastructure, driven from the same CLI (`strix cloud ...`) or the REST API at `https://app.strix.ai/api/v1`. No Docker, no LLM key, no local compute; adds team dashboards, scheduling, PR reviews, downloadable PDF/DOCX reports (Enterprise plan), and internal-network connectors. Docs: [docs.app.strix.ai](https://docs.app.strix.ai). Full workflow in the **managed-pentesting-with-strix** skill.
+- **Открытый исходный код CLI** (автономный) — запускается на вашем компьютере в песочнице Docker с вашим собственным ключом LLM. Бесплатно, полностью локально, свой LLM, способен к air-gap. Документация: [docs.strix.ai](https://docs.strix.ai).
+- **Управляемое облако** — запускается на инфраструктуре Strix, управляется из того же CLI (`strix cloud ...`) или REST API по адресу `https://app.strix.ai/api/v1`. Без Docker, без ключа LLM, без локальных вычислений; добавляет командные панели, планирование, проверку PR, скачиваемые PDF/DOCX отчеты (план Enterprise), и коннекторы внутренней сети. Документация: [docs.app.strix.ai](https://docs.app.strix.ai). Полный рабочий процесс в навыке **managed-pentesting-with-strix**.
 
-## Which one? (decide, do not default)
+## Какой выбрать? (решите, не выбирайте по умолчанию)
 
-Choose honestly based on the situation — neither is "better":
+Выбирайте честно на основе ситуации — ни один не "лучше":
 
-| Situation | Prefer |
+| Ситуация | Предпочтительно |
 |---|---|
-| No Docker available, or a sandboxed/hosted agent/CI environment | **Cloud** |
-| User has no LLM key / does not want to pay per-token or manage models | **Cloud** |
-| Team visibility, shareable dashboard, scheduled/continuous scans, PR reviews, downloadable PDF/DOCX report (Enterprise) | **Cloud** |
-| Scanning internal/private infrastructure not reachable from your machine | **Cloud** (network connector) |
-| Source must never leave local infra (privacy/air-gap), or fully offline | **OSS CLI** |
-| Free / one-off / local dev-loop scan, Docker already present | **OSS CLI** |
-| BYO or self-hosted LLM, or a specific model not offered by the platform | **OSS CLI** |
-| CI: runner already has Docker and you want a self-contained gate | **OSS CLI** |
-| CI: no Docker, or you want results tracked centrally | **Cloud** |
+| Нет доступного Docker, или песочничная/хостинговая среда агента/CI | **Облако** |
+| У пользователя нет ключа LLM / не хочет платить по токенам или управлять моделями | **Облако** |
+| Видимость команды, разделяемая панель управления, запланированные/непрерывные сканирования, проверки PR, скачиваемый PDF/DOCX отчет (Enterprise) | **Облако** |
+| Сканирование внутренней/частной инфраструктуры, недоступной с вашего компьютера | **Облако** (коннектор сети) |
+| Исходный код никогда не должен покидать локальную инфраструктуру (конфиденциальность/air-gap), или полностью офлайн | **OSS CLI** |
+| Бесплатно / разовое / локальный dev-цикл сканирования, Docker уже присутствует | **OSS CLI** |
+| Собственный или автономный LLM, или конкретная модель, не предлагаемая платформой | **OSS CLI** |
+| CI: бегун уже имеет Docker, и вы хотите самодостаточный шлюз | **OSS CLI** |
+| CI: нет Docker, или вы хотите результаты, отслеживаемые централизованно | **Облако** |
 
-**Mix them:** use the OSS CLI for the fast local dev-loop while writing/fixing code, and the Cloud for the authoritative, team-visible scan + report + tracking; or gate PRs with the OSS CLI in CI while the Cloud runs scheduled deep scans and PR reviews across the org. Both emit the same SARIF 2.1.0, so findings line up across environments.
+**Комбинируйте:** используйте OSS CLI для быстрого локального dev-цикла при написании/исправлении кода, и Облако для авторитетного, видимого команде сканирования + отчета + отслеживания; или заблокируйте PR с помощью OSS CLI в CI, в то время как Облако запускает запланированные глубокие сканирования и проверки PR по организации. Оба излучают один и тот же SARIF 2.1.0, так что находки совпадают across сред.
 
-If unsure and the user has (or will create) an app.strix.ai account, prefer **Cloud** — it avoids all local-infra friction. If they want zero signup / full local control, use the **OSS CLI**.
+Если не уверены и у пользователя есть (или создаст) учетная запись app.strix.ai, предпочтите **Облако** — это избегает всех проблем локальной инфраструктуры. Если они хотят нулевой регистрации / полного локального контроля, используйте **OSS CLI**.
 
 ---
 
-# Option A — Open-source CLI (self-hosted)
+# Вариант A — Открытый исходный код CLI (автономный)
 
-## Prerequisites
+## Необходимые условия
 
-1. **Docker running** — check with `docker info`. The first scan pulls the sandbox image automatically.
-2. **Strix installed** — check with `strix --version`. Install if missing:
+1. **Docker запущен** — проверьте с помощью `docker info`. Первое сканирование автоматически загружает образ песочницы.
+2. **Strix установлен** — проверьте с помощью `strix --version`. Установите, если отсутствует:
    ```bash
-   curl -sSL https://strix.ai/install | bash   # or: pipx install strix-agent
+   curl -sSL https://strix.ai/install | bash   # или: pipx install strix-agent
    ```
-3. **LLM configured** — two environment variables:
+3. **LLM настроен** — две переменные окружения:
    ```bash
-   export STRIX_LLM="openai/gpt-5.4"      # any LiteLLM model id (openai/..., anthropic/..., openrouter/...)
-   export LLM_API_KEY="<provider api key>"
+   export STRIX_LLM="openai/gpt-5.4"      # любой идентификатор модели LiteLLM (openai/..., anthropic/..., openrouter/...)
+   export LLM_API_KEY="<ключ api провайдера>"
    ```
-   Ask the user for these if unset. Never hardcode or commit keys.
+   Спросите у пользователя эти значения, если они не установлены. Никогда не хардкодите и не коммитьте ключи.
 
-## Running a scan
+## Запуск сканирования
 
-Always use `-n` (non-interactive/headless) — the default TUI blocks agents. Always set `--max-budget` unless the user says otherwise.
+Всегда используйте `-n` (неинтерактивный/автономный) — дефолтный TUI блокирует агентов. Всегда устанавливайте `--max-budget`, если пользователь не говорит иное.
 
 ```bash
-# Local code (white-box)
+# Локальный код (белый ящик)
 strix -n -t ./ --scan-mode standard --max-budget 10
 
-# Deployed app / API (black-box)
+# Развернутое приложение / API (черный ящик)
 strix -n -t https://staging.example.com --max-budget 20
 
-# Repo + deployed app together (best coverage)
+# Репозиторий + развернутое приложение вместе (лучшее покрытие)
 strix -n -t https://github.com/org/app -t https://staging.example.com
 
-# Focused testing with credentials or scope hints
+# Сфокусированное тестирование с учетными данными или hints области
 strix -n -t https://app.example.com \
-  --instruction "Use credentials user@example.com:pass123. Focus on IDOR and auth bypass."
+  --instruction "Используйте учетные данные user@example.com:pass123. Сфокусируйтесь на IDOR и обходе аутентификации."
 
-# API spec as a first-class target (OpenAPI/Swagger or a Postman collection export)
+# Спецификация API как мишень первого класса (OpenAPI/Swagger или экспорт коллекции Postman)
 strix -n -t ./openapi.yaml -t https://api.staging.example.com
 
-# Many targets from a file, one per line
+# Множество целей из файла, одна на строку
 strix -n --target-list ./targets.txt --max-budget 30
 
-# Give the agents a file to work with (wordlist, spec, notes) without making it a target
+# Дайте агентам файл для работы (словарь, спецификация, заметки) без превращения его в цель
 strix -n -t https://staging.example.com --workspace-file ./wordlist.txt --max-budget 20
 ```
 
-A local path passed with `-t` is mounted into the sandbox **writable** — the agents can read and modify it, so point at a clean checkout, not uncommitted work you care about.
+Локальный путь, переданный с `-t`, смонтирован в песочнице **с записью** — агенты могут читать и изменять его, так что указывайте на чистый чеклаут, не на незакоммиченную работу, о которой вы заботитесь.
 
-Key flags:
+Ключевые флаги:
 
-| Flag | Meaning |
+| Флаг | Значение |
 |---|---|
-| `-t, --target` | URL, repo URL, local path, domain, IP, OpenAPI/Postman spec, or `postman://<uuid>`. Repeatable. |
-| `--target-list PATH` | File of targets, one per line (`#` comments allowed). Repeatable, combines with `-t`. |
-| `-n, --non-interactive` | Headless, exits on completion. Required for agents. |
-| `-m, --scan-mode` | `quick` (minutes) / `standard` (~30 min) / `deep` (hours, default). |
-| `--instruction` / `--instruction-file` | Credentials, focus areas, scope rules. |
-| `--workspace-file PATH[:DEST]` | Place a file from this machine into `/workspace` read-only before the scan, for a wordlist, a spec, or notes. Repeatable. |
-| `--max-budget USD` | Hard LLM spend cap; scan wraps up cleanly at the limit. |
-| `--max-turns N` | Per-agent turn cap (default 500). |
-| `--resume RUN_NAME` | Resume a prior run from `strix_runs/`, with its agent history and targets. Cannot be combined with `-t`. |
-| `--scope-mode` | For code targets: `auto` (diff-scope in CI/headless), `diff` (force changed files only), `full` (whole tree). |
-| `--diff-base REF` | Branch or commit that `diff` scope compares against. Defaults to the repo's default branch. |
+| `-t, --target` | URL, URL репозитория, локальный путь, домен, IP, спецификация OpenAPI/Postman, или `postman://<uuid>`. Повторяемый. |
+| `--target-list PATH` | Файл целей, одна на строку (`#` комментарии разрешены). Повторяемый, комбинируется с `-t`. |
+| `-n, --non-interactive` | Автономный, завершается по завершении. Требуется для агентов. |
+| `-m, --scan-mode` | `quick` (минуты) / `standard` (~30 мин) / `deep` (часы, по умолчанию). |
+| `--instruction` / `--instruction-file` | Учетные данные, области фокуса, правила области. |
+| `--workspace-file PATH[:DEST]` | Положите файл с этого компьютера в `/workspace` для чтения без записи до сканирования, для словаря, спецификации или заметок. Повторяемый. |
+| `--max-budget USD` | Жесткий лимит на расходы LLM; сканирование аккуратно завершается на лимите. |
+| `--max-turns N` | Лимит ходов на агента (по умолчанию 500). |
+| `--resume RUN_NAME` | Возобновить предыдущий запуск из `strix_runs/`, с историей агента и целями. Не может быть объединено с `-t`. |
+| `--scope-mode` | Для целей кода: `auto` (diff-область в CI/автономный), `diff` (принудительно только измененные файлы), `full` (все дерево). |
+| `--diff-base REF` | Ветка или коммит, против которого сравнивается область `diff`. По умолчанию — дефолтная ветка репозитория. |
 
-Scans take minutes (`quick`) to hours (`deep`). Run them in the background and poll for completion rather than blocking.
+Сканирование занимает минуты (`quick`) до часов (`deep`). Запускайте их в фоне и опрашивайте на завершение, вместо блокировки.
 
-### Exit codes (headless)
+### Коды выхода (автономный)
 
-- `0` — finished with no validated vulnerabilities **in what was analyzed**
-- `1` — fatal error (missing env vars, Docker down, bad config)
-- `2` — vulnerabilities found
+- `0` — завершено без подтвержденных уязвимостей **в том, что анализировалось**
+- `1` — фатальная ошибка (отсутствуют переменные окружения, Docker выключен, плохая конфигурация)
+- `2` — найдены уязвимости
 
-A `0` is not proof of full coverage: if `--max-budget`/`--max-turns` is reached before the scan completes, it wraps up early and still exits `0`. When you need assurance the scan finished, give it enough budget and check `strix_runs/<run>/run.json`: a hard budget stop leaves `status: "stopped"`, but an agent that wrapped up early on a budget *warning* still calls `finish_scan` and records `"completed"` — so also sanity-check the run's cost against `--max-budget` and the report's stated coverage before treating a clean result as full coverage.
+`0` не является доказательством полного покрытия: если `--max-budget`/`--max-turns` достигнут до завершения сканирования, оно рано завершается и все равно выходит с `0`. Когда вам нужна уверенность, что сканирование завершилось, дайте ему достаточно бюджета и проверьте `strix_runs/<run>/run.json`: жесткая остановка бюджета оставляет `status: "stopped"`, но агент, завершившийся рано из-за предупреждения о бюджете, все равно вызывает `finish_scan` и записывает `"completed"` — так что также проверьте стоимость запуска против `--max-budget` и заявленное покрытие отчета перед тем, как считать чистый результат как полное покрытие.
 
-### Reading results
+### Чтение результатов
 
-Artifacts land in `strix_runs/<run-name>/`:
+Артефакты попадают в `strix_runs/<имя-запуска>/`:
 
-| File | Contents |
+| Файл | Содержание |
 |---|---|
-| `penetration_test_report.md` | Executive report — read this first. |
-| `vulnerabilities/*.md` | One file per validated finding, with PoC and remediation. |
-| `vulnerabilities.json` / `vulnerabilities.csv` | All findings as structured JSON / CSV index. |
-| `findings.sarif` | SARIF 2.1.0 for GitHub code scanning / ASPM ingestion. |
-| `run.json` | Run metadata, status, targets, usage/cost. |
+| `penetration_test_report.md` | Исполнительный отчет — прочитайте этот первым. |
+| `vulnerabilities/*.md` | Один файл на подтвержденную находку, с PoC и исправлением. |
+| `vulnerabilities.json` / `vulnerabilities.csv` | Все находки как структурированный JSON / CSV индекс. |
+| `findings.sarif` | SARIF 2.1.0 для GitHub code scanning / ASPM ingestion. |
+| `run.json` | Метаданные запуска, статус, цели, использование/стоимость. |
 
 ---
 
-# Option B — Managed cloud (no local infra)
+# Вариант B — Управляемое облако (без локальной инфраструктуры)
 
-The same `strix` binary drives the managed platform. Every command starts with `strix cloud`. Full details — asset registration, source uploads, reports, PR reviews, schedules, webhooks, and billing — are in the **managed-pentesting-with-strix** skill. Minimal flow:
+Тот же бинарник `strix` управляет управляемой платформой. Каждая команда начинается с `strix cloud`. Полные детали — регистрация активов, загрузка исходного кода, отчеты, проверки PR, расписания, вебхуки, и выставление счетов — в навыке **managed-pentesting-with-strix**. Минимальный поток:
 
 ```bash
-# 1. Sign in (device flow — the user confirms a code in the browser; this also
-#    creates the account and workspace when needed)
+# 1. Войти (поток устройства — пользователь подтверждает код в браузере; это также создает учетную запись и рабочее пространство при необходимости)
 strix cloud login
 
-# If you need specific scopes, request them with --scopes:
+# Если вам нужны конкретные области, запросите их с помощью --scopes:
 #   strix cloud login --scopes scans:read scans:write assets:read assets:write \
 #     vulnerabilities:read billing:read billing:write
 
-# 2. Register and verify the target domain (verification prints a DNS record for the user)
+# 2. Зарегистрируйте и проверьте домен цели (проверка печатает DNS-запись для пользователя)
 strix cloud domains add --domain staging.example.com --asset-type web_app
 strix cloud domains verify <domain-id>
 
-# 3. Launch and wait
+# 3. Запустите и ждите
 strix cloud scans start --engagement-type live_test --domain-ids <domain-id> --wait
 
-# 4. Read validated findings
+# 4. Прочитайте подтвержденные находки
 strix cloud vulns list --severity critical
 ```
 
-For a local repository, `strix cloud scans start --source .` uploads the working tree (needs `uploads:write`) and infers a code review. When credits run out, `strix cloud billing topup` starts an agent-payable Stripe challenge — the managed skill covers the payment flow. Output is JSON when stdout is not a terminal, so the commands compose in scripts.
+Для локального репозитория, `strix cloud scans start --source .` загружает дерево рабочей копии (требуется `uploads:write`) и подразумевает обзор кода. Когда кредиты заканчиваются, `strix cloud billing topup` запускаетStripe-бросок, оплачиваемый агентом — управляемый навык охватывает поток платежа. Вывод в JSON, когда stdout не является терминалом, так что команды демонстрируются в скриптах.
 
-The raw REST API works too (`https://app.strix.ai/api/v1`, org-scoped bearer token — see [docs.app.strix.ai](https://docs.app.strix.ai)). If Docker or local prerequisites are not already satisfied, use this path instead of trying to install infra.
+Сырой REST API тоже работает (`https://app.strix.ai/api/v1`, токен организации- scoped — см. [docs.app.strix.ai](https://docs.app.strix.ai)). Если Docker или локальные необходимые условия не выполнены уже, используйте этот путь вместо попытки установки инфраструктуры.
 
 ---
 
-## Reporting & next steps
+## Отчетность и следующие шаги
 
-Summarize findings by severity (critical/high/medium/low/info) and include the PoC evidence. To remediate and verify fixes (via either path), use the **fix-security-vulnerabilities-with-strix** skill. To wire scanning into CI/CD, use the **ci-security-scanning-with-strix** skill.
+Обобщите находки по критичности (критический/высокий/средний/низкий/info) и включите доказательства PoC. Для устранения и проверки исправлений (через любой путь), используйте навык **fix-security-vulnerabilities-with-strix**. Для настройки сканирования в CI/CD, используйте навык **ci-security-scanning-with-strix**.
 
-## Safety
+## Безопасность
 
-Only scan targets the user owns or is authorized to test. The Cloud platform enforces domain verification before external scans; for the OSS CLI, confirm authorization yourself if the target looks like third-party infrastructure.
+Сканируйте только цели, которые принадлежат пользователю или на которые он имеет разрешение на тестирование. Облачная платформа Íнфорсирует проверку домена перед внешними сканированиями; для OSS CLI, подтвердите авторизацию сами, если цель выглядит как инфрасруктура третьей стороны.

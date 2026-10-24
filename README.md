@@ -1,33 +1,24 @@
-<p align="center">
-  <a href="https://strix.ai/">
-    <img src="https://github.com/usestrix/.github/raw/main/imgs/cover.png" alt="Strix Banner" width="100%">
-  </a>
-</p>
-
-<div align="center">
-
 # Strix
 
-### The open-source AI pentesting tool. Autonomous AI hackers that find and fix your app’s vulnerabilities.
+### Открытый исходный код инструмент для пентестинга с ИИ. Автономные ИИ пентестеры, которые находят и исправляют уязвимости вашего приложения.
 
 <br/>
 
-
-<a href="https://docs.strix.ai"><img src="https://img.shields.io/badge/Docs-docs.strix.ai-2b9246?style=for-the-badge&logo=gitbook&logoColor=white" alt="Docs"></a>
-<a href="https://strix.ai"><img src="https://img.shields.io/badge/Website-strix.ai-f0f0f0?style=for-the-badge&logoColor=000000" alt="Website"></a>
+<a href="https://docs.strix.ai"><img src="https://img.shields.io/badge/Docs-docs.strix.ai-2b9246?style=for-the-badge&logo=gitbook&logoColor=white" alt="Документация"></a>
+<a href="https://strix.ai"><img src="https://img.shields.io/badge/Website-strix.ai-f0f0f0?style=for-the-badge&logoColor=000000" alt="Веб-сайт"></a>
 [![](https://dcbadge.limes.pink/api/server/strix-ai)](https://discord.gg/strix-ai)
 
 <a href="https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=badge_cloud"><img src="https://img.shields.io/badge/Strix%20Cloud-app.strix.ai-2b9246?style=for-the-badge&logoColor=white" alt="Strix Cloud"></a>
-<a href="https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=badge_demo"><img src="https://img.shields.io/badge/Try%20Strix%20Enterprise-555555?style=for-the-badge&logoColor=white" alt="Try Strix Enterprise"></a>
+<a href="https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=badge_demo"><img src="https://img.shields.io/badge/Try%20Strix%20Enterprise-555555?style=for-the-badge&logoColor=white" alt="Попробуйте Strix Enterprise"></a>
 
-<a href="https://deepwiki.com/usestrix/strix"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
+<a href="https://deepwiki.com/usestrix/strix"><img src="https://deepwiki.com/badge.svg" alt="Спросите DeepWiki"></a>
 <a href="https://github.com/usestrix/strix"><img src="https://img.shields.io/github/stars/usestrix/strix?style=flat-square" alt="GitHub Stars"></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-3b82f6?style=flat-square" alt="License"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-3b82f6?style=flat-square" alt="Лицензия"></a>
 <a href="https://pypi.org/project/strix-agent/"><img src="https://img.shields.io/pypi/v/strix-agent?style=flat-square" alt="PyPI Version"></a>
 
 
-<a href="https://discord.gg/strix-ai"><img src="https://github.com/usestrix/.github/raw/main/imgs/Discord.png" height="40" alt="Join Discord"></a>
-<a href="https://x.com/strix_ai"><img src="https://github.com/usestrix/.github/raw/main/imgs/X.png" height="40" alt="Follow on X"></a>
+<a href="https://discord.gg/strix-ai"><img src="https://github.com/usestrix/.github/raw/main/imgs/Discord.png" height="40" alt="Присоединяйтесь к Discord"></a>
+<a href="https://x.com/strix_ai"><img src="https://github.com/usestrix/.github/raw/main/imgs/X.png" height="40" alt="Следите на X"></a>
 
 
 <a href="https://trendshift.io/repositories/15362?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-15362" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/15362/weekly" alt="usestrix%2Fstrix | Trendshift" width="250" height="55"/></a>
@@ -35,24 +26,23 @@
 
 </div>
 
-
 > [!TIP]
-> **New!** Strix integrates seamlessly with GitHub Actions and CI/CD pipelines. Automatically scan for vulnerabilities on every pull request and block insecure code before it reaches production - [Get started with no setup required](https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=tip_ci).
+> **Новое!** Strix интегрируется с GitHub Actions и CI/CD конвейерами. Автоматически сканируйте на наличие уязвимостей при каждом pull request и блокируйте небезопасный код до того, как он достигнет продакшена - [Начните с нулевой настройки](https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=tip_ci).
 
 ---
 
 
-## Strix Overview
+## Обзор Strix
 
-Strix are autonomous AI penetration testing agents that act just like real hackers - they run your code dynamically, find vulnerabilities, and validate them through actual proofs-of-concept. Built for developers and security teams who need fast, accurate security testing without the overhead of manual pentesting or the false positives of static analysis tools.
+Strix - это автономные ИИ пентестеры, которые действуют как настоящие хакеры - они динамически запускают ваш код, находят уязвимости и подтверждают их через реальные доказательства. Создано для разработчиков и команд безопасности, которым нужны быстрые и точные тесты безопасности без избыточной нагрузки на ручной пентестинг или инструменты статического анализа с ложными срабатываниями.
 
-**Key Capabilities:**
+**Основные возможности:**
 
-- **Full pentesting toolkit** - reconnaissance, exploitation, and validation out of the box
-- **Multi-agent orchestration** - teams of AI pentesters that collaborate and scale
-- **Real exploit validation** - working PoCs, not false positives like legacy vulnerability scanners
-- **Developer‑first CLI** - actionable findings with remediation guidance
-- **Auto‑fix & reporting** - generate patches and compliance-ready pentest reports
+- **Полный набор инструментов для пентестинга** - разведка, эксплуатация и подтверждение уязвимостей из коробки
+- **Оркестрация мультиагентов** - команды ИИ пентестеров, которые сотрудничают и масштабируются
+- **Реальное подтверждение эксплуатации** - работающие доказательства уязвимостей, а не ложные срабатывания, как у устаревших сканеров уязвимостей
+- **Интерфейс для разработчиков** - действительные находки с рекомендациями по устранению
+- **Автоматическое исправление и отчетность** - генерация патчей и готовые к использованию отчеты о пентестинге для соответствия требованиям
 
 
 <br>
@@ -60,189 +50,187 @@ Strix are autonomous AI penetration testing agents that act just like real hacke
 
 <div align="center">
   <a href="https://strix.ai">
-    <img src=".github/screenshot.png" alt="Strix Demo" width="1000" style="border-radius: 16px;">
+    <img src=".github/screenshot.png" alt="Демо Strix" width="1000" style="border-radius: 16px;">
   </a>
 </div>
 
 
-## Use Cases
+## Сферы применения
 
-- **Application Security Testing** - Detect and validate critical vulnerabilities in your applications
-- **Rapid Penetration Testing** - Get penetration tests done in hours, not weeks, with compliance reports
-- **Bug Bounty Automation** - Automate bug bounty research and generate PoCs for faster reporting
-- **CI/CD Integration** - Run tests in CI/CD to block vulnerabilities before reaching production
+- **Тестирование безопасности приложений** - обнаружение и подтверждение критических уязвимостей в ваших приложениях
+- **Быстрый пентестинг** - выполните пентестинг за часы, а не за недели, с отчетами о соответствии требованиям
+- **Автоматизация баг-баунти** - автоматизируйте исследование баг-баунти и генерируйте доказательства для более быстрого отчетности
+- **Интеграция в CI/CD** - запускайте тесты в CI/CD для блокировки уязвимостей до достижения продакшена
 
-## 🚀 Quick Start
+## 🚀 Быстрый старт
 
-**Prerequisites:**
-- Docker (running)
-- An LLM API key from any [supported provider](https://docs.strix.ai/llm-providers/overview) (OpenAI, Anthropic, Google, etc.)
+**Предварительные требования:**
+- Docker (работающий)
+- Ключ API LLM от любого [поддерживаемого провайдера](https://docs.strix.ai/llm-providers/overview) (OpenAI, Anthropic, Google и т.д.)
 
-### Installation & First Scan
+### Установка и первый сканирование
 
 ```bash
-# Install Strix
+# Установите Strix
 curl -sSL https://strix.ai/install | bash
 
-# Configure your AI provider
+# Настройте вашего провайдера ИИ
 export STRIX_LLM="openrouter/z-ai/glm-5.3"
-export LLM_API_KEY="your-api-key"
+export LLM_API_KEY="ваш-api-ключ"
 
-# Run your first security assessment
+# Запустите первое тестирование безопасности
 strix --target ./app-directory
 ```
 
 > [!NOTE]
-> First run automatically pulls the sandbox Docker image. Results are saved to `strix_runs/<run-name>`
+> Первый запуск автоматически загружает образ Docker песочницы. Результаты сохраняются в `strix_runs/<run-name>`
 
 ---
 
-## Ways to Run Strix
+## Способы запуска Strix
 
-- **Open Source** - free, runs locally with Docker and your own LLM key. [Quick Start](https://docs.strix.ai/quickstart)
-- **Strix Cloud** - no setup, validated findings, one-click autofix, and PR reviews. [Run a pentest →](https://app.strix.ai?intent=pentest&utm_source=github&utm_medium=readme&utm_content=table_cloud)
-- **Enterprise** - SSO, compliance-ready reports, VPC or self-hosted deployment. [Try Strix Enterprise →](https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=table_demo)
+- **Открытый исходный код** - бесплатно, работает локально с Docker и вашим собственным ключом LLM. [Быстрый старт](https://docs.strix.ai/quickstart)
+- **Strix Cloud** - без настройки, подтвержденные находки, автофикс в один клик и проверка PR. [Запустите пентестинг →](https://app.strix.ai?intent=pentest&utm_source=github&utm_medium=readme&utm_content=table_cloud)
+- **Enterprise** - SSO, отчеты о пентестинге, соответствующие требованиям, VPC или самостоятельное размещение. [Попробуйте Strix Enterprise →](https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=table_demo)
 
 ---
 
 ## ☁️ Strix Cloud
 
-Try the Strix full-stack penetration testing platform at **[app.strix.ai](https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=cloud_heading)** - sign up for free, connect your repos and domains, and launch a pentest in minutes.
+Попробуйте платформу полного стека пентестинга Strix на **[app.strix.ai](https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=cloud_heading)** - зарегистрируйтесь бесплатно, подключите свои репозитории и домены, и запустите пентестинг за несколько минут.
 
-- **Validated findings with PoCs** - every vulnerability includes a working proof-of-concept exploit and reproduction steps
-- **One-click autofix** - AI-generated security patches as ready-to-merge pull requests
-- **Continuous pentesting** - always-on vulnerability scanning that keeps pace with your deployments
-- **DevSecOps integrations** - GitHub, GitLab, Bitbucket, Slack, Jira, Linear, and CI/CD pipelines
-- **Continuous learning** - AI that builds on past findings, adapts to your codebase, and reduces false positives over time
+- **Подтвержденные находки с доказательствами** - каждая уязвимость включает работающее доказательство уязвимости и шаги воспроизведения
+- **Автофикс в один клик** - исправления безопасности, сгенерированные ИИ, как готовые к слиянию pull-запросы
+- **Непрерывный пентестинг** - постоянное сканирование уязвимостей, которое поддерживает темп ваших развертываний
+- **Интеграции DevSecOps** - GitHub, GitLab, Bitbucket, Slack, Jira, Linear и CI/CD конвейеры
+- **Непрерывное обучение** - ИИ, который строит на прошлых находках, адаптируется к вашему кодовому базу и уменьшает количество ложных срабатываний со временем
 
-[**Run a pentest →**](https://app.strix.ai?intent=pentest&utm_source=github&utm_medium=readme&utm_content=cloud_cta)
+[**Запустите пентестинг →**](https://app.strix.ai?intent=pentest&utm_source=github&utm_medium=readme&utm_content=cloud_cta)
 
 ## 🏢 Enterprise
 
-Get the same Strix experience with enterprise-grade controls: SSO (SAML/OIDC), custom compliance-ready penetration testing reports (SOC 2, ISO 27001, PCI DSS), dedicated support and SLA, custom deployment options (VPC or self-hosted), BYOK model support, and tailored AI pentesting agents optimized for your environment.
+Получите тот же опыт Strix с корпоративными контролями: SSO (SAML/OIDC), готовые к использованию отчеты о пентестинге, соответствующие требованиям (SOC 2, ISO 27001, PCI DSS), выделенная поддержка и SLA, настраиваемые варианты развертывания (VPC или самостоятельное размещение), поддержка модели BYOK и индивидуальные ИИ пентестеры, оптимизированные для вашей среды.
 
-[**Try Strix Enterprise →**](https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=enterprise_cta)
+[**Попробуйте Strix Enterprise →**](https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=enterprise_cta)
 
 ---
 
-## 🤖 Use Strix from Your Coding Agent
+## 🤖 Используйте Strix из вашего кодирующего агента
 
-Strix is agent-ready. Give Claude Code, Cursor, Codex, or any [SKILL.md-compatible](https://agentskills.io) agent the ability to run pentests, fix findings, and set up CI scanning:
+Strix готов для агентов. Дайте Claude Code, Cursor, Codex или любому [совместимому с SKILL.md](https://agentskills.io) агенту возможность запускать пентестинг, исправлять находки и настраивать сканирование CI:
 
 ```bash
 npx skills add usestrix/strix
 ```
 
-This installs nine skills for running pentests, fixing findings, and CI scanning, against code, web apps, APIs, and the OWASP Top 10. Agents can use the local CLI or the managed cloud with the same engine.
+Это устанавливает девять навыков для запуска пентестинга, исправления находок и сканирования CI, против кода, веб-приложений, API и OWASP Top 10. Агенты могут использовать локальный CLI или управляемую облачную платформу с одним и тем же движком.
 
-See [`AGENTS.md`](AGENTS.md) for the quick reference, [docs.strix.ai/llms.txt](https://docs.strix.ai/llms.txt) for the CLI, and [docs.app.strix.ai](https://docs.app.strix.ai) for the API.
-
----
-
-## ✨ Features
-
-### Agentic Pentesting Tools
-
-Strix agents come equipped with a comprehensive offensive security toolkit - the same tools used by professional penetration testers and ethical hackers:
-
-- **HTTP Interception Proxy** - Full request/response manipulation and analysis with Caido
-- **Browser Exploitation** - Automated browser for testing XSS, CSRF, clickjacking, and auth bypass flows
-- **Shell & Command Execution** - Interactive terminal for exploit development and post-exploitation
-- **Custom Exploit Runtime** - Python sandbox for writing and validating proof-of-concept exploits
-- **Reconnaissance & OSINT** - Automated attack surface mapping, subdomain enumeration, and fingerprinting
-- **Static & Dynamic Code Analysis** - SAST + DAST capabilities for comprehensive application security testing
-- **Vulnerability Knowledge Base** - Structured findings with CVSS scoring and OWASP classification
-
-### Comprehensive Vulnerability Scanner
-
-Strix identifies, validates, and exploits a wide range of security vulnerabilities across the OWASP Top 10 and beyond:
-
-- **Broken Access Control** - IDOR, privilege escalation, auth bypass
-- **Injection Attacks** - SQL injection, NoSQL injection, OS command injection, SSTI
-- **Server-Side Vulnerabilities** - SSRF, XXE, insecure deserialization, RCE
-- **Client-Side Attacks** - XSS (stored/reflected/DOM), prototype pollution, CSRF
-- **Business Logic Flaws** - Race conditions, payment manipulation, workflow bypass
-- **Authentication & Session** - JWT attacks, session fixation, credential stuffing vectors
-- **Infrastructure & Cloud** - Misconfigurations, exposed services, cloud security issues
-- **API Security** - Broken authentication, mass assignment, rate limiting bypass
-
-### Graph of Agents (Multi-Agent Pentesting)
-
-Advanced multi-agent orchestration for comprehensive automated penetration testing:
-
-- **Distributed Pentesting** - Specialized AI agents for recon, exploitation, and post-exploitation
-- **Scalable Security Testing** - Parallel execution across multiple targets for fast, comprehensive coverage
-- **Dynamic Coordination** - Agents share discoveries, chain vulnerabilities, and collaborate like a red team
+См. [`AGENTS.md`](AGENTS.md) для быстрого справочника, [docs.strix.ai/llms.txt](https://docs.strix.ai/llms.txt) для CLI и [docs.app.strix.ai](https://docs.app.strix.ai) для API.
 
 ---
 
-## 🖥️ Local Web Viewer
+## ✨ Особенности
 
-Every scan writes its results to disk as it runs. Bring them up in a local dashboard with a single command:
+### Инструменты для пентестинга с ИИ
+
+Агенты Strix оснащены всесторонним инструментарием для оффенсивной безопасности - теми же инструментами, которые используют профессиональные пентестеры и этичные хакеры:
+
+- **HTTP-прокси** - полное манипулирование и анализ запросов/ответов с Caido
+- **Эксплуатация браузера** - автоматизированный браузер для тестирования XSS, CSRF, кликджекинга и обхода аутентификации
+- **Выполнение команд и оболочек** - интерактивный терминал для разработки эксплойтов и постэксплуатации
+- **Пользовательский рантайм для эксплойтов** - песочница Python для написания и подтверждения доказательств уязвимостей
+- **Разведка и OSINT** - автоматизированное картирование поверхности атаки, перечисление поддоменов и отпечатки
+- **Статический и динамический анализ кода** - SAST + DAST для комплексного тестирования безопасности приложений
+- **База знаний уязвимостей** - структурированные находки с оценкой CVSS и классификацией OWASP
+
+### Комплексный сканер уязвимостей
+
+Strix обнаруживает, подтверждает и эксплуатирует широкий спектр уязвимостей безопасности, охватывающих OWASP Top 10 и за его пределами:
+
+- **Нарушенный контроль доступа** - IDOR, повышение привилегий, обход аутентификации
+- **Атаки инъекций** - SQL-инъекции, NoSQL-инъекции, инъекции команд ОС, SSTI
+- **Уязвимости серверной части** - SSRF, XXE, небезопасная десериализация, RCE
+- **Атаки клиентской части** - XSS (хранимый/отраженный/DOM), загрязнение прототипа, CSRF
+- **Логические уязвимости** - гонки, манипуляции платежами, обход рабочих процессов
+- **Аутентификация и сессии** - атаки JWT, фиксация сессии, векторы подбора учетных данных
+- **Инфраструктура и облако** - неправильные настройки, открытые сервисы, проблемы безопасности облака
+- **Безопасность API** - нарушенная аутентификация, массовое назначение, обход ограничения скорости
+
+### Граф агентов (мультиагентный пентестинг)
+
+Расширенная оркестрация мультиагентов для комплексного автоматизированного пентестинга:
+
+- **Распределенный пентестинг** - специализированные ИИ агенты для разведки, эксплуатации и постэксплуатации
+- **Масштабируемое тестирование безопасности** - параллельное выполнение по нескольким целям для быстрого и комплексного покрытия
+- **Динамическая координация** - агенты делятся открытиями, связывают уязвимости и сотрудничают, как красная команда
+
+---
+
+## 🖥️ Локальный веб-вьюер
+
+Каждый сканирование записывает свои результаты на диск по мере выполнения. Запустите их в локальной панели управления одной командой:
 
 ```bash
-# Open the most recent run
+# Откройте последний запуск
 strix view
 
-# ...or open a specific run by name
+# ...или откройте конкретный запуск по имени
 strix view my-run-name
 
-# Expose the viewer on all IPv4 interfaces at a fixed port
+# Показать вьюер на всех интерфейсах IPv4 на фиксированном порту
 strix view --host 0.0.0.0 --port 8080 --no-open
 ```
 
-The dashboard shows the findings, a live map of the agent team, and past runs. Nothing leaves your machine, and the UI ships prebuilt. `strix view` binds to `127.0.0.1` and prints a tokened link that grants access to the run, so share it carefully.
+Панель управления отображает находки, живую карту команды агентов и предыдущие запуски. Ничего не покидает ваш компьютер, и интерфейс поставляется с предустановленным. `strix view` привязывается к `127.0.0.1` и выводит токенизированную ссылку, которая предоставляет доступ к запуску, поэтому делитесь ею осторожно.
 
-See the [viewer documentation](https://docs.strix.ai/usage/viewer) for the options and for reaching the viewer from another machine.
+См. [документацию по вьюеру](https://docs.strix.ai/usage/viewer) для опций и для доступа к вьюеру с другого компьютера.
 
 ---
 
-## Usage Examples
+## Примеры использования
 
-### Basic Usage
+### Основное использование
 
 ```bash
-# Scan a local codebase
+# Сканирование локального кодового базы
 strix --target ./app-directory
 
-# Security review of a GitHub repository
+# Проверка безопасности GitHub репозитория
 strix --target https://github.com/org/repo
 
-# Black-box web application assessment
+# Проверка безопасности веб-приложения
 strix --target https://your-app.com
 ```
 
-### API Testing (OpenAPI / Swagger / Postman)
+### Тестирование API (OpenAPI / Swagger / Postman)
 
-Point Strix at an API contract and it tests every declared endpoint instead of
-having to discover them by crawling. Pair the spec with the live base URL so the
-agent knows where to send traffic:
+Укажите Strix на API-контракт, и он протестирует каждый объявленный конечную точку вместо того, чтобы иметь дело с их открытием путем обхода. Соедините спецификацию с живым базовым URL-адресом, чтобы агент знал, куда отправлять трафик:
 
 ```bash
-# OpenAPI / Swagger file, Postman export, or a live collection by id
+# Файл OpenAPI / Swagger, экспорт Postman или живая коллекция по id
 strix --target ./openapi.yaml --target https://api.your-app.com
 strix --target postman://<collection-uuid> --target https://api.your-app.com
 ```
 
 
-### Advanced Testing Scenarios
+### Расширенные сценарии тестирования
 
 ```bash
-# Grey-box authenticated testing
-strix --target https://your-app.com --instruction "Perform authenticated testing using credentials: user:pass"
+# Проверка безопасности с аутентификацией
+strix --target https://your-app.com --instruction "Выполните тестирование с аутентификацией, используя учетные данные: user:pass"
 
-# Multi-target testing (source code + deployed app)
+# Мультицелевое тестирование (исходный код + развернутое приложение)
 strix -t https://github.com/org/app -t https://your-app.com
 
-# Targets from a file, one target per non-empty, non-comment line
+# Цели из файла, одна цель на непустую, не комментированную строку
 strix --target-list ./targets.txt
 ```
 
-See the [CLI reference](https://docs.strix.ai/usage/cli) for every option, including scan modes, diff scope, instruction files, and budgets.
+См. [справочник по CLI](https://docs.strix.ai/usage/cli) для каждой опции, включая режимы сканирования, область разницы, файлы инструкций и бюджеты.
 
-### Headless Mode
+### Режим без интерактивного интерфейса
 
-Run Strix programmatically without interactive UI using the `-n/--non-interactive` flag - perfect for servers and automated jobs. The CLI prints real-time vulnerability findings and the final report before exiting. Exits with non-zero code when vulnerabilities are found.
+Запустите Strix программно без интерактивного интерфейса с помощью флага `-n/--non-interactive` - идеально для серверов и автоматизированных задач. CLI выводит находки уязвимостей в реальном времени и окончательный отчет перед выходом. Выходит с ненулевым кодом, когда уязвимости найдены.
 
 ```bash
 strix -n --target https://your-app.com
@@ -250,7 +238,7 @@ strix -n --target https://your-app.com
 
 ### CI/CD (GitHub Actions)
 
-Strix can be added to your pipeline to run a security test on pull requests with a lightweight GitHub Actions workflow:
+Strix можно добавить в ваш конвейер для запуска теста безопасности на pull-запросах с легковесным рабочим процессом GitHub Actions:
 
 ```yaml
 name: strix-penetration-test
@@ -266,10 +254,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Strix
+      - name: Установите Strix
         run: curl -sSL https://strix.ai/install | bash
 
-      - name: Run Strix
+      - name: Запустите Strix
         env:
           STRIX_LLM: ${{ secrets.STRIX_LLM }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
@@ -278,52 +266,50 @@ jobs:
 ```
 
 > [!TIP]
-> In CI pull request runs, Strix automatically scopes quick reviews to changed files, which is why the
-> checkout above fetches full history. See the
-> [CI/CD documentation](https://docs.strix.ai/integrations/github-actions) for the details.
+> В CI pull request запусках Strix автоматически ограничивает быстрые обзоры измененными файлами, поэтому вышеуказанный checkout загружает полную историю. См. [документацию по CI/CD](https://docs.strix.ai/integrations/github-actions) для подробностей.
 
-### Configuration
+### Конфигурация
 
 ```bash
 export STRIX_LLM="openrouter/z-ai/glm-5.3"
-export LLM_API_KEY="your-api-key"
+export LLM_API_KEY="ваш-api-ключ"
 
-# Optional
-export LLM_API_BASE="your-api-base-url"  # if using a local model, e.g. Ollama, LMStudio
+# Необязательно
+export LLM_API_BASE="ваш-api-base-url"  # если используется локальная модель, например, Ollama, LMStudio
 ```
 
 > [!NOTE]
-> Strix automatically saves your configuration to `~/.strix/cli-config.json`, so you don't have to re-enter it on every run.
-> See the [configuration reference](https://docs.strix.ai/advanced/configuration) for every environment variable.
+> Strix автоматически сохраняет вашу конфигурацию в `~/.strix/cli-config.json`, поэтому вам не нужно повторно вводить ее при каждом запуске.
+> См. [справочник по конфигурации](https://docs.strix.ai/advanced/configuration) для каждой переменной окружения.
 
-#### Sign in with a ChatGPT subscription
+#### Вход с подпиской ChatGPT
 
-Instead of a metered API key, you can run Strix on your ChatGPT Plus/Pro subscription:
+Вместо оплачиваемого API-ключа вы можете запускать Strix на своей подписке ChatGPT Plus/Pro:
 
 ```bash
-strix auth login chatgpt             # sign in with your ChatGPT account
-export STRIX_LLM="chatgpt/gpt-5.4"   # chatgpt/<model> runs on the subscription
-strix auth status                    # show the active sign-in, or logout to forget it
+strix auth login chatgpt             # войдите в систему с вашей учетной записью ChatGPT
+export STRIX_LLM="chatgpt/gpt-5.4"   # chatgpt/<model> работает на подписке
+strix auth status                    # показать активный вход, или logout для забывания
 ```
 
-#### Use the managed platform: `strix cloud`
+#### Используйте управляемую платформу: `strix cloud`
 
-Run scans on [app.strix.ai](https://app.strix.ai) from the terminal, without Docker or an LLM key:
+Запускайте сканирования на [app.strix.ai](https://app.strix.ai) из терминала, без Docker или ключа LLM:
 
 ```bash
-strix cloud login                                  # browser sign-in, one credential per install
-strix cloud scans start --source . --yes --wait    # scan local code, approving the upload
+strix cloud login                                  # вход через браузер, одна учетная запись на установку
+strix cloud scans start --source . --yes --wait    # сканирование локального кода, подтверждение загрузки
 strix cloud scans start --engagement-type live_test --domain-ids <uuid> --wait
 strix cloud vulns list --severity critical
 ```
 
-Every [REST API](https://docs.app.strix.ai) operation has a matching `strix cloud <resource> <verb>` command. Run `strix cloud` to list the resources, and add `help` to a resource to list its verbs. Output is JSON when stdout is not a terminal or when you pass `--json`. Binary downloads are the exception: redirect the raw bytes, or combine `--output FILE --json` for download metadata.
+Каждая операция [REST API](https://docs.app.strix.ai) имеет соответствующую команду `strix cloud <resource> <verb>`. Запустите `strix cloud`, чтобы перечислить ресурсы, и добавьте `help` к ресурсу, чтобы перечислить его глаголы. Вывод в формате JSON, когда stdout не является терминалом или когда вы передаете `--json`. Загрузки бинарных файлов являются исключением: перенаправьте сырые байты, или соедините `--output FILE --json` для метаданных загрузки.
 
-See the [cloud CLI documentation](https://docs.strix.ai/cloud/cli) for scopes, workspaces, billing, and source-upload options.
+См. [документацию по облачному CLI](https://docs.strix.ai/cloud/cli) для областей, рабочих пространств, выставления счетов и опций загрузки исходного кода.
 
-#### Connect your own MCP servers
+#### Подключите свои собственные серверы MCP
 
-Strix can connect to Model Context Protocol (MCP) servers you list and expose their tools to the agent during a run. Create `~/.strix/mcp-servers.json` with a JSON list of local `stdio` servers or remote `http` servers:
+Strix может подключаться к серверам Model Context Protocol (MCP), которые вы перечисляете и открываете, и предоставлять их инструменты агенту во время запуска. Создайте `~/.strix/mcp-servers.json` с JSON-списком локальных серверов `stdio` или удаленных серверов `http`:
 
 ```json
 [
@@ -337,42 +323,42 @@ Strix can connect to Model Context Protocol (MCP) servers you list and expose th
 ]
 ```
 
-Each server's tools are namespaced by `name`, for example `github_list_issues`. See the [MCP documentation](https://docs.strix.ai/integrations/mcp) for the full schema, tool filtering, and `stdio` servers.
+Инструменты каждого сервера пространства имен по `name`, например `github_list_issues`. См. [документацию по MCP](https://docs.strix.ai/integrations/mcp) для полной схемы, фильтрации инструментов и серверов `stdio`.
 
-**Recommended models for best results:**
+**Рекомендуемые модели для наилучших результатов:**
 
-- [Z.ai GLM-5.3 on OpenRouter](https://openrouter.ai/z-ai/glm-5.3) - `openrouter/z-ai/glm-5.3` (the default pick)
+- [Z.ai GLM-5.3 на OpenRouter](https://openrouter.ai/z-ai/glm-5.3) - `openrouter/z-ai/glm-5.3` (стандартный выбор)
 - [OpenAI GPT-5.4](https://openai.com/api/) - `openai/gpt-5.4`
 - [Anthropic Claude Sonnet 4.6](https://claude.com/platform/api) - `anthropic/claude-sonnet-4-6`
 - [Google Gemini 3 Pro Preview](https://cloud.google.com/vertex-ai) - `vertex_ai/gemini-3-pro-preview`
 - [DeepSeek V4 Pro](https://platform.deepseek.com) - `deepseek/deepseek-v4-pro`
 - [Moonshot Kimi K3](https://platform.kimi.ai) - `moonshot/kimi-k3`
 
-See the [LLM Providers documentation](https://docs.strix.ai/llm-providers/overview) for all supported providers including Vertex AI, Bedrock, Azure, and local models.
+См. [документацию по LLM-провайдерам](https://docs.strix.ai/llm-providers/overview) для всех поддерживаемых провайдеров, включая Vertex AI, Bedrock, Azure и локальные модели.
 
-## Documentation
+## Документация
 
-Full documentation is available at **[docs.strix.ai](https://docs.strix.ai)** - including detailed guides for usage, CI/CD integrations, skills, and advanced configuration.
+Полная документация доступна на **[docs.strix.ai](https://docs.strix.ai)** - включая подробные руководства по использованию, интеграциям CI/CD, навыкам и расширенной конфигурации.
 
-## Contributing
+## Вклад в проект
 
-We welcome contributions of code, docs, and new skills - check out our [Contributing Guide](https://docs.strix.ai/contributing) to get started or open a [pull request](https://github.com/usestrix/strix/pulls)/[issue](https://github.com/usestrix/strix/issues).
+Мы приветствуем вклад кода, документации и новых навыков - ознакомьтесь с нашим [Руководством по участию](https://docs.strix.ai/contributing) для начала работы или откройте [pull request](https://github.com/usestrix/strix/pulls)/[issue](https://github.com/usestrix/strix/issues).
 
-## Join Our Community
+## Присоединяйтесь к нашему сообществу
 
-Have questions? Found a bug? Want to contribute? **[Join our Discord!](https://discord.gg/strix-ai)**
+Есть вопросы? Нашли баг? Хотите внести вклад? **[Присоединяйтесь к нашему Discord!](https://discord.gg/strix-ai)**
 
-## Support the Project
+## Поддержка проекта
 
-**Love Strix?** Give us a ⭐ on GitHub!
+**Нравится Strix?** Поставьте нам ⭐ на GitHub!
 
-## Acknowledgements
+## Благодарности
 
-Strix builds on the incredible work of open-source projects like [LiteLLM](https://github.com/BerriAI/litellm), [Caido](https://github.com/caido/caido), [Nuclei](https://github.com/projectdiscovery/nuclei), [Playwright](https://github.com/microsoft/playwright), and [Bubble Tea](https://github.com/charmbracelet/bubbletea). Huge thanks to their maintainers!
+Strix строится на основе замечательной работы открытых проектов, таких как [LiteLLM](https://github.com/BerriAI/litellm), [Caido](https://github.com/caido/caido), [Nuclei](https://github.com/projectdiscovery/nuclei), [Playwright](https://github.com/microsoft/playwright) и [Bubble Tea](https://github.com/charmbracelet/bubbletea). Огромное спасибо их разработчикам!
 
 
 > [!WARNING]
-> **Authorized use only.** Strix actively tests the targets you point it at, so only run it against systems you own or have **explicit, written permission** to test, and stay within the agreed scope. Unauthorized testing is illegal in most jurisdictions.
-> You alone are responsible for obtaining authorization and complying with the law. Strix is provided "as is" with no warranty or liability for misuse.
+> **Авторизованное использование только.** Strix активно тестирует цели, на которые вы указываете, поэтому запускайте его только на системах, которые вы владеете или на которые у вас есть **явное письменное разрешение** для тестирования, и оставайтесь в рамках согласованной области. Несанкционированное тестирование незаконно в большинстве юрисдикций.
+> Вы несете единственную ответственность за получение разрешения и соблюдение закона. Strix предоставляется "как есть" без гарантии или ответственности за неправомерное использование.
 
 </div>
